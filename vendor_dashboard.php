@@ -2,6 +2,15 @@
     session_start();
     include("dbcon/conn.php");
     $vid=$_SESSION['id'];
+    $sql="SELECT * FROM vendor_info WHERE vendor_id='$vid'";
+    $result=mysqli_query($conn,$sql);
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $uname=$row['vendor_name'];
+            $num=$row['vendor_phone_number'];
+            $email=$row['vendor_email'];
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +24,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-
-
-    
     <style>
         body {
             background: #17a2b8;;
@@ -118,10 +124,11 @@ tr:hover {background-color:#17a2b8; ;}
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                 <span class="font-weight-bold">
-                    <?php echo $_SESSION['vname']?>
-                </span>
-                <span class="text-black-50">
-                    <?php echo $_SESSION['vnumber']?>
+                    <?php echo $uname?>
+                    <br>
+                    <?php echo $num ?>
+                    <br>
+                    <?php echo $email ?>
                 </span>
             </div>
                 <div class="px-3 p-1 add-experience" style="text-decoration:none;">
@@ -129,6 +136,10 @@ tr:hover {background-color:#17a2b8; ;}
                         <button name="submit" type="submit">Logout</button>
                     </form>
                 </div>
+                <br><br><br>
+                <div class="px-3 p-1 add-experience" style="text-decoration:none;">
+                    <a href="vendorupdate.php"><Button>Update Profile</Button></a>
+                </div>   
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -144,14 +155,25 @@ tr:hover {background-color:#17a2b8; ;}
                             echo "<table class='center'>
                             <tr><th>Service</th> 
                             <th>Phone</th> 
+                            <th>Action</th>
                             </tr>";
                             while($row=mysqli_fetch_assoc($result)){
-                                $_SESSION['car']=$row['owner_phone'];
-                                echo "
-                                <tr>
-                            <td>".$row["title"]."</td>
-                            <td>".$row["owner_phone"]."</td>
-                            </tr>";
+                                $_SESSION['car']=$row['service_id'];
+                                if($row['status']=="pending"){
+                                    $iid=$row['service_id'];
+                                    echo"
+                                    <tr>
+                                    <td>".$row["title"]."</td>
+                                    <td>".$row["owner_phone"]."</td>
+                                    <td>
+                                        <form method='POST' action='action.php'>
+                                            <input type='hidden' value='$iid' name='service'>
+                                            <input style='background-color:#45FF24' type='submit' name='done' value='Done'/>
+                                            <input style='background-color:#FF482B' type='submit' name='reject' value='Reject'/>
+                                        </form>
+                                    </td>
+                                    </tr>";
+                                }
                             }
                             echo "</table>";
                         }
@@ -184,7 +206,7 @@ tr:hover {background-color:#17a2b8; ;}
                         $sql = "SELECT customer_name,owner_phone,price,title FROM customer_order";
                         $result = $conn->query($sql);
 
-                        if ($result->num_rows > 0) {
+                        if ($result->num_rows > 0){
                         echo "<table class='center'>
                         <tr><th>Customer</th> 
                         <th>Phone</th> 
@@ -247,13 +269,11 @@ tr:hover {background-color:#17a2b8; ;}
         </div>
     </div>
 </div>
-</div>
-<div id="foot" class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
+    <div id="foot" class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
         <p class="m-0 text-center text-white">
             &copy; <a class="text-white font-weight-medium" href="#">AUTOCARE </a>. All Rights Reserved. Designed by
             <a class="text-white font-weight-medium" href="https://htmlcodex.com">Flying Whales </a>
         </p>
     </div>
-</div>
 </body>
 </html>

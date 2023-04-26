@@ -1,17 +1,16 @@
 <?php 
 	include("dbcon/conn.php");
 
-	$name=$shop=$address=$phone=$password=' ';
+	$name=$shop=$email=$phone=$password=' ';
 	
 		$name=$_POST['vendor_name'];
-		$shop=$_POST['vendor_shop_name'];
-		$address=$_POST['vendor_address'] ;
+		$email=$_POST['vendor_email'] ;
 		$phone=$_POST['vendor_phone_number'];
 		$password=$_POST['password']; 
 		
 
-		$sql="INSERT INTO vendor_info(vendor_name,vendor_shop_name,vendor_phone_number,vendor_address,password)  
-				VALUES ('$name','$shop','$phone','$address','$password')";
+		$sql="INSERT INTO vendor_info(vendor_name,vendor_phone_number,vendor_email,password)  
+				VALUES ('$name','$phone','$email','$password')";
 		$run=mysqli_query($conn,$sql);
 
 		if ($run){

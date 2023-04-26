@@ -149,7 +149,7 @@
                         <input type="text" name="uname" placeholder="Enter username"><br>
                         <br>
                         <label>Password</label>
-                        <input type="text" name="psw" placeholder="Enter password"><br>
+                        <input type="password" name="psw" placeholder="Enter password"><br>
                         <br>
                         <br>
                         <br>

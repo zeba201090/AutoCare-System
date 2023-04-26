@@ -3,11 +3,11 @@
     include("dbcon/conn.php");
     
     $ocar=$vphone=' ';
-    $title='Tire change';
+    $title=$_POST['title'];
 
-    $ocar=$_SESSION['number'];
-    $vphone=$_SESSION['vnumber'];
-    $vid=$_SESSION['vid'];
+    $ocar=$_SESSION['owner_phone'];
+    $vphone=$_POST['vphone'];
+    $vid=$_POST['vid'];
     $oid=$_SESSION['owner_id'];
 
     $sql="INSERT INTO cservice(owner_phone,vphone,title,vendor_id,owner_id) 

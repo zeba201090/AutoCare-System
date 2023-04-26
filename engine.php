@@ -68,15 +68,19 @@
     <div class="container">
         <h3>Engine Diagnosis</h3>
     <?php
-        $sql="Select * from vendor_info";
+        $sql="SELECT * FROM garage";
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0){
             while($row=mysqli_fetch_assoc($result)){
-                $_SESSION['vnumber']=$row['vendor_phone_number'];
-                echo "<tr><td>".$row["vendor_shop_name"]."&nbsp;&nbsp;<tr><td>".$row["vendor_phone_number"]."&nbsp;&nbsp;<tr><td>".$row["vendor_address"];
+                $vphone=$row["phone"];
+                $vid=$row["vendor_id"];
+                echo "<tr><td>".$row["name"]."&nbsp;&nbsp;<tr><td>".$vphone."&nbsp;&nbsp;<tr><td>".$row["address"]."&nbsp;&nbsp;<tr><td>".$row["email"];
                 "<br>";
                 ?>
-                <form action="engine_index.php" method='POST'>
+                <form action="service_index.php" method='POST'>
+                    <input type="hidden" name="title" value="Engine Diagnosis">
+                    <input type="hidden" name="vid" value="<?php echo $vid ?>">
+                    <input type="hidden" name="vphone" value="<?php echo $vphone ?>">
                     <button class="button" name="submit">Book online</button> 
                     <button class="button" onclick="location.href='owner_login.php'">Call</button> 
                 </form>

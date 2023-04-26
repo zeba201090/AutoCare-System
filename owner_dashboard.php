@@ -1,7 +1,18 @@
 <?php 
     session_start();
-    $_SESSION['owner_id'];
     include("dbcon/conn.php");
+    $id=$_SESSION['owner_id'];
+    $sql="SELECT * FROM owners_info WHERE owner_id='$id'";
+    $result=mysqli_query($conn,$sql);
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()){
+            $uname=$row['owner_name'];
+            $num=$row['owner_phone_number'];
+            $email=$row['owner_email'];
+        }
+      }
+      $_SESSION['owner_phone']=$num;
+      $_SESSION['owner_email']=$email;
 ?>
 
 <!DOCTYPE html>
@@ -101,13 +112,22 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                 <span class="font-weight-bold">
-                <?php echo $_SESSION['name'] ?>
-                </span><span class="text-black-50"><?php echo $_SESSION['number']?></span><span> </span></div>
+                    <?php echo $uname?>
+                    <br>
+                    <?php echo $num ?>
+                    <br>
+                    <?php echo $email ?>
+                </span>
+            </div>
                 <div class="px-3 p-1 add-experience" style="text-decoration:none;">
                     <form action="odash_index.php" method="Post">
                         <button name="submit" type="submit">Logout</button>
                     </form>
                 </div>
+                <br><br><br>
+                <div class="px-3 p-1 add-experience" style="text-decoration:none;">
+                    <a href="ownerupdate.php"><Button>Update Profile</Button></a>
+                </div>     
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -144,7 +164,6 @@
             <br>
                 <div>
                     <?php
-                        $id=$_SESSION['owner_id'];
                         $sql="SELECT * FROM vehicle_info 
                         WHERE owner_id IN (SELECT owner_id From owners_info WHERE owner_id=$id)";
                         $result=mysqli_query($conn,$sql);

@@ -25,13 +25,13 @@
             if (mysqli_num_rows($result)===1){
                 $row=mysqli_fetch_assoc($result);
                 if($row['owner_name']===$uname&&$row['password']===$psw){
-                    $_SESSION['name']=$uname;
-                    $_SESSION['number']=$row['owner_phone_number'];
+                    // $_SESSION['name']=$uname;
+                    // $_SESSION['number']=$row['owner_phone_number'];
                     $_SESSION['owner_id']=$row['owner_id'];
 
-                    $name=$_SESSION['name'];
-                    $number=$_SESSION['number'];
-                    $own_id=$_SESSION['owner_id'];
+                    // $name=$_SESSION['name'];
+                    // $number=$_SESSION['number'];
+                    // $own_id=$_SESSION['owner_id'];
                     header("Location:owner_dashboard.php");
                 }
             }

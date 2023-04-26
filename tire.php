@@ -72,12 +72,15 @@
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0){
             while($row=mysqli_fetch_assoc($result)){
-                $_SESSION['vid']=$row['vendor_id'];
-                $_SESSION['vnumber']=$row['phone'];
-                echo "<tr><td>".$row["name"]."&nbsp;&nbsp;<tr><td>".$row["phone"]."&nbsp;&nbsp;<tr><td>".$row["address"]."&nbsp;&nbsp;<tr><td>".$row["email"];
+                $vphone=$row["phone"];
+                $vid=$row["vendor_id"];
+                echo "<tr><td>".$row["name"]."&nbsp;&nbsp;<tr><td>".$vphone."&nbsp;&nbsp;<tr><td>".$row["address"]."&nbsp;&nbsp;<tr><td>".$row["email"];
                 "<br>";
                 ?>
-                <form action="tire_index.php" method='POST'>
+                <form action="service_index.php" method='POST'>
+                    <input type="hidden" name="title" value="Tire change">
+                    <input type="hidden" name="vid" value="<?php echo $vid ?>">
+                    <input type="hidden" name="vphone" value="<?php echo $vphone ?>">
                     <button class="button" name="submit">Book online</button> 
                     <button class="button" onclick="location.href='owner_login.php'">Call</button> 
                 </form>

@@ -26,8 +26,6 @@
             if (mysqli_num_rows($result)===1){
                 $row=mysqli_fetch_assoc($result);
                 if($row['vendor_name']===$uname&&$row['password']===$psw){
-                    $_SESSION['vname']=$uname;
-                    $_SESSION['vnumber']=$row['vendor_phone_number'];
                     $_SESSION['id']=$row['vendor_id'];
                     
                     header("Location:vendor_dashboard.php");

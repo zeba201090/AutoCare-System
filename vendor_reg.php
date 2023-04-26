@@ -162,13 +162,8 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="shop">Shop name</label>
-                <input class="form-control" type="text" name="vendor_shop_name" id="shop" required />
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input class="form-control" type="text" name="vendor_address" id="address" required />
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="vendor_email" id="email" required />
             </div>
             <br>
             <div class="form-group">
