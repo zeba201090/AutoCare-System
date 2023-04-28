@@ -13,6 +13,7 @@
       }
       $_SESSION['owner_phone']=$num;
       $_SESSION['owner_email']=$email;
+      $suggest=False;
 ?>
 
 <!DOCTYPE html>
@@ -184,65 +185,98 @@
                 <div>
                     <h3>Suggested</h3>
                     <?php
-                        $sql="SELECT * from vehicle_info 
-                        WHERE owner_id IN (Select owner_id From owners_info)";
+                        $sql="SELECT date,title,status FROM cservice 
+                        WHERE owner_id=$id AND status='done'";
                         $result=mysqli_query($conn,$sql);
-                            if(isset($row["wash"])==1){
+                        $row=mysqli_fetch_assoc($result);
+                        if(mysqli_num_rows($result)==0){
+                            ?>
+                            <h1 style="color:purple">Woohoo you are up to date!!</h1>
+                            <?php
+                        }
+                        else{
+                            $serve=$row['title'];
+                            if($row['date']==date("Y-m-d")){
+                                $suggest=TRUE;
+                            }
+                            if($suggest==TRUE){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">CAR WASH</button>
+                                <h1 style="color:purple">Woohoo you are up to date!!</h1>
+                                <?php
+                            }
+                            if($suggest==FALSE&&$serve=='Tire change'){
+                                ?>
+                                <button class="button2">Tire change</button>
                                 <br>
                                 <?php
                             }
-                            if(isset($row["brake"])==1){
+                            if($suggest==FALSE&&$serve=='Car Wash'){
                                 ?>
-                                <button class="button2" onclick="location.href='brake.php'">BRAKE CHANGE</button>
+                                <button class="button2">CAR WASH</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["engine"])==1){
+                            if($suggest==FALSE&&$serve=='Car Waxing'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">ENGINE DIAGNOSIS</button>
+                                <button class="button2">Car Waxing</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["oil"])==1){
+                            if($suggest==FALSE&&$serve=='Wheel Change'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">OIL CHANGE</button>
+                                <button class="button2">Wheel Change</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["tire"])==1){
+                            if($suggest==FALSE&&$serve=='Change Spark Plug'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">TIRE CHANGE</button>
+                                <button class="button2">Change Spark Plug</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["wiper"])==0){
+                            if($suggest==FALSE&&$serve=='Shock and Struts inspection'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">WINDSHIELD WIPERS</button>
+                                <button class="button2">Shock and Struts inspection</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["filter"])==0){
+                            if($suggest==FALSE&&$serve=='Change engine oil'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">AIR FILTER REPLACE</button>
+                                <button class="button2">Change engine oil</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["wheel"])==0){
+                            if($suggest==FALSE&&$serve=='Air filter replacement'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">WHEEL ALIGN</button>
+                                <button class="button2">Air filter replacement</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["spark plug"])==0){
+                            if($suggest==FALSE&&$serve=='Engine Diagnosis'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">SPARK PLUG</button>
+                                <button class="button2">Engine Diagnosis</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["shock"])==0){
+                            if($suggest==FALSE&&$serve=='Replace Brake'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">SHOCKS AND STRUTS</button>
+                                <button class="button2">Replace Brake</button>
+                                <br>
                                 <?php
                             }
-                            if(isset($row["batttery"])==0){
+                            if($suggest==FALSE&&$serve=='Change Car Battery'){
                                 ?>
-                                <button class="button2" onclick="location.href='vswash.php'">BATTARY REPLACE</button>
+                                <button class="button2">Change Car Battery</button>
+                                <br>
                                 <?php
                             }
+                            if($suggest==FALSE&&$serve=='Wiper Change'){
+                                ?>
+                                <button class="button2">Wiper Change</button>
+                                <br>
+                                <?php
+                            }
+                        }
                     ?>
                 </div>
                 <br>
