@@ -155,6 +155,7 @@ tr:hover {background-color:#17a2b8; ;}
                             echo "<table class='center'>
                             <tr><th>Service</th> 
                             <th>Phone</th> 
+                            <th>Address</th>
                             <th>Action</th>
                             </tr>";
                             while($row=mysqli_fetch_assoc($result)){
@@ -165,6 +166,7 @@ tr:hover {background-color:#17a2b8; ;}
                                     <tr>
                                     <td>".$row["title"]."</td>
                                     <td>".$row["owner_phone"]."</td>
+                                    <td>".$row["address"]."</td>
                                     <td>
                                         <form method='POST' action='action.php'>
                                             <input type='hidden' value='$iid' name='service'>
@@ -215,15 +217,21 @@ tr:hover {background-color:#17a2b8; ;}
                         <th>Action</th>
 
                         </tr>";
-                        while($row = $result->fetch_assoc()) {
+                        while($row = $result->fetch_assoc()){
                             echo "<tr>
                             <td>".$row["customer_name"]."</td>
                             <td>".$row["owner_phone"]."</td>
                             <td>".$row["title"]."</td>
                             <td>".$row["price"]."</td>
+                            </tr>
+                            <td>
+                                <form method='POST'>
+                                    <input style='background-color:#45FF24' type='submit' name='done' value='Done'/>
+                                    <input style='background-color:#FF482B' type='submit' name='reject' value='Reject'/>
+                                </form>
+                            </td>
+                            ";
                             
-                            </tr>";
-
                         }
                         echo "</table>";
                         } else {

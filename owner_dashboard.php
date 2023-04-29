@@ -9,6 +9,7 @@
             $uname=$row['owner_name'];
             $num=$row['owner_phone_number'];
             $email=$row['owner_email'];
+            $_SESSION['address']=$row['owner_address'];
         }
       }
       $_SESSION['owner_phone']=$num;
