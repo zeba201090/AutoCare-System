@@ -193,11 +193,10 @@ tr:hover {background-color:#17a2b8; ;}
                 <div class="row mt-3">
                     <h3>Your Orders</h3>
                     <?php
-                        $sql = "SELECT customer_name,owner_phone,price,title FROM customer_order
+                        $sql = "SELECT * FROM customer_order
                         WHERE vendor_id=$vid";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0){
+                        $result=mysqli_query($conn,$sql);
+                        if(mysqli_num_rows($result)>0){
                         echo "<table class='center'>
                         <tr><th>Customer</th> 
                         <th>Phone</th> 
@@ -207,20 +206,23 @@ tr:hover {background-color:#17a2b8; ;}
 
                         </tr>";
                         while($row = $result->fetch_assoc()){
-                            echo "<tr>
-                            <td>".$row["customer_name"]."</td>
-                            <td>".$row["owner_phone"]."</td>
-                            <td>".$row["title"]."</td>
-                            <td>".$row["price"]."</td>
-                            </tr>
-                            <td>
-                                <form method='POST'>
-                                    <input style='background-color:#45FF24' type='submit' name='done' value='Done'/>
-                                    <input style='background-color:#FF482B' type='submit' name='reject' value='Reject'/>
-                                </form>
-                            </td>
-                            ";
-                            
+                            $order_id=$row['order_id'];
+                            if($row['status']=='pending'){
+                                echo "<tr>
+                                <td>".$row["customer_name"]."</td>
+                                <td>".$row["owner_phone"]."</td>
+                                <td>".$row["title"]."</td>
+                                <td>".$row["price"]."</td>
+                                </tr>
+                                <td>
+                                    <form method='POST' action='ordering.php'>
+                                        <input type='hidden' value='$order_id' name='orderid'/>
+                                        <input style='background-color:#45FF24' type='submit' name='done' value='Done'/>
+                                        <input style='background-color:#FF482B' type='submit' name='reject' value='Reject'/>
+                                    </form>
+                                </td>
+                                ";
+                            }              
                         }
                         echo "</table>";
                         } 
