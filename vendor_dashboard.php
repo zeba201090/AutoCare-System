@@ -193,19 +193,8 @@ tr:hover {background-color:#17a2b8; ;}
                 <div class="row mt-3">
                     <h3>Your Orders</h3>
                     <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "car_management_system";
-
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-                        // Check connection
-                        if ($conn->connect_error){
-                        die("Connection failed: ".$conn->connect_error);
-                        }
-
-                        $sql = "SELECT customer_name,owner_phone,price,title FROM customer_order";
+                        $sql = "SELECT customer_name,owner_phone,price,title FROM customer_order
+                        WHERE vendor_id=$vid";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0){
@@ -234,10 +223,10 @@ tr:hover {background-color:#17a2b8; ;}
                             
                         }
                         echo "</table>";
-                        } else {
-                        echo "0 results";
+                        } 
+                        else {
+                        echo "You have no orders currently";
                         }
-                        // $conn->close();
                     ?>
                 </div>
             </div>
