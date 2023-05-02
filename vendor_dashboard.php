@@ -245,6 +245,7 @@ tr:hover {background-color:#17a2b8; ;}
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience"><span></span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;<a href="upload.html" style="text-decoration:none; color:black;">Add a Product</a></span></div><br>
                 <div class="d-flex justify-content-between align-items-center experience"><span></span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;<a href="garage.php" style="text-decoration:none; color:black;">Add a garage</a></span></div><br>
+                <div class="d-flex justify-content-between align-items-center experience"><span></span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;<a href="spec_req.php" style="text-decoration:none; color:black;">Special Request</a></span></div><br>
                 Garage Details
                 <div>
                 <br>
