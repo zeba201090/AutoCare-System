@@ -139,7 +139,13 @@ tr:hover {background-color:#17a2b8; ;}
                 <br><br><br>
                 <div class="px-3 p-1 add-experience" style="text-decoration:none;">
                     <a href="vendorupdate.php"><Button>Update Profile</Button></a>
-                </div>   
+                </div>
+                <div class="px-3 p-1 add-experience" style="text-decoration:none;">
+                    <form action="special.php" method="POST">
+                        <input type="hidden" name="vid" value="<?php echo $vid ?>">
+                        <input type="submit" value="Special Service">
+                    </form>
+                </div> 
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -156,6 +162,7 @@ tr:hover {background-color:#17a2b8; ;}
                             <tr><th>Service</th> 
                             <th>Phone</th> 
                             <th>Address</th>
+                            <th>Garage</th>
                             <th>Action</th>
                             </tr>";
                             while($row=mysqli_fetch_assoc($result)){
@@ -167,6 +174,7 @@ tr:hover {background-color:#17a2b8; ;}
                                     <td>".$row["title"]."</td>
                                     <td>".$row["owner_phone"]."</td>
                                     <td>".$row["address"]."</td>
+                                    <td>".$row["garage"]."</td>
                                     <td>
                                         <form method='POST' action='action.php'>
                                             <input type='hidden' value='$iid' name='service'>

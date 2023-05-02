@@ -101,8 +101,10 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="shopping.php" class="nav-item nav-link">Marketplace</a>
-
+                        <a href="shopping.php" class="nav-item nav-link">Marketplace</a> 
+                    </div>
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="speciallist.php" class="nav-item nav-link">Special Services</a> 
                     </div>
                 </div>
             </nav>

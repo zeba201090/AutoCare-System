@@ -74,10 +74,12 @@
             while($row=mysqli_fetch_assoc($result)){
                 $vphone=$row["phone"];
                 $vid=$row["vendor_id"];
-                echo "<tr><td>".$row["name"]."&nbsp;&nbsp;<tr><td>".$vphone."&nbsp;&nbsp;<tr><td>".$row["address"]."&nbsp;&nbsp;<tr><td>".$row["email"];
+                $garage=$row["name"];
+                echo "<tr><td>".$garage."&nbsp;&nbsp;<tr><td>".$vphone."&nbsp;&nbsp;<tr><td>".$row["address"]."&nbsp;&nbsp;<tr><td>".$row["email"];
                 "<br>";
                 ?>
                 <form action="service_index.php" method='POST'>
+                    <input type="hidden" name="garage" value="<?php echo $garage ?>">
                     <input type="hidden" name="title" value="Change engine oil">
                     <input type="hidden" name="vid" value="<?php echo $vid ?>">
                     <input type="hidden" name="vphone" value="<?php echo $vphone ?>">
