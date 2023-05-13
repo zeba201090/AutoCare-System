@@ -11,7 +11,6 @@ input[name=submit]{
 }
 </style>
 <?php
-    session_start();
     include("dbcon/conn.php");
     $oid=$_SESSION['owner_id'];
 

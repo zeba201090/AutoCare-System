@@ -126,7 +126,6 @@
         }
         h2{
             color: #194376;
-            background-color: black;
             
             font-weight: lighter;
             

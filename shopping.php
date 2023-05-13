@@ -2,6 +2,18 @@
     session_start();
     $con = mysqli_connect("localhost","root","",'car_management_system');
    
+    $id=$_SESSION['owner_id'];
+    $sql="SELECT * FROM owners_info WHERE owner_id='$id'";
+    $result=mysqli_query($con,$sql);
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()){
+            $uname=$row['owner_name'];
+            $num=$row['owner_phone_number'];
+            $email=$row['owner_email'];
+        }
+      }
+      $_SESSION['owner_phone']=$num;
+      $_SESSION['owner_email']=$email;
     if (isset($_POST["add"])){
 
         if (isset($_SESSION["cart"])){
@@ -39,8 +51,7 @@
             foreach ($_SESSION["cart"] as $keys => $value){
                 if ($value["id"] == $_GET["id"]){
                     unset($_SESSION["cart"][$keys]);
-                    echo '<script>alert("Product has been Removed...!")</script>';
-                    echo '<script>window.location="shopping.php"</script>';
+                    echo '<script>window.location="cart.php"</script>';
                 }
             }
         }
@@ -59,13 +70,13 @@
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="cart.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -168,16 +179,19 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                       <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
+                        <div class="navbar-nav ml-auto py-0">
                         <a href="landing.php" class="nav-item nav-link active">Home</a>
                         <a href="services.php" class="nav-item nav-link">Services</a>
                         <a href="home.php" class="nav-item nav-link">JOIN US!</a>
                             
                         <a href="shopping.php" class="nav-item nav-link">Marketplace</a>
                         <a href=" " class="nav-item nav-link">About</a>
+                        <div  style="  color: grey; padding-left: 20px; padding-top: 20px; line-height: 12px; float: right; width: 150px; margin-left:180px; margin-top: 20px; font-size: 15px; font-weight: bold;"> 
+                        <p> Hello <?php echo $uname?>! <p>
+                        </div>
 
-                    </div>
-                </div>
+                        </div>
+                        </div>
                 </div>
             </nav>
         </div>
@@ -187,9 +201,10 @@
 
 <!product>
 <br>
-    <div class="container" style="width: 100%">
-        <h2>PRODUCTS</h2>
-        <?php
+
+    <div style="  display:flex; width:100%; height: 800px;">
+        <div id= "product" style=" border:1px solid grey; float:left; width: 80%; margin-left: 200px; margin-top:70px; ">   
+            <?php
             $query = "SELECT * FROM images ORDER BY id ASC ";
             $result = mysqli_query($con,$query);
             if(mysqli_num_rows($result) > 0) {
@@ -200,14 +215,14 @@
                     ?>
                     <div  class="col-md-3">
 
-                        <form method="post" action="shopping.php?action=add&id=<?php echo $row["id"]; ?>">
+                        <form method="post" action="shoppingcart.php?action=add&id=<?php echo $row["id"]; ?>">
 
                             <div class="product">
 
                                 <img id="shopimg" src="uploads/<?=$row['image_url']?>" class="img-responsive"alt="">
               
-                                <h5 class="text-info"> <?php echo $row["title"]; ?></h5>
-                                <h5 class="text-danger"> ৳ <?php echo  $row["price"]; ?></h5>
+                                <p class="text-info"> <?php echo $row["title"]; ?></p>
+                                <p class="text-danger"> ৳ <?php echo  $row["price"]; ?></p>
                                 <input type="text" name="quantity" class="form-control" value="1">
                                 <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>">
                                 <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
@@ -215,45 +230,36 @@
                                        value="Add to Cart">
                             </div>
                         </form>
+                        
                     </div>
+                    
                     <?php
                 }
             }
+            
         ?>
+        </div>
+        <div id="cart">
+            
+<form action="cart.php" method="POST">
+          
+                
+           <div class="cart" >
+                   
+              
+            <button id="addcart" href="cart.php;"><i class="fa fa-shopping-cart" style="font-size:30px;color:white;margin-top: 5px;"></i>View Cart</button>
+                   
+                  </div>
+
+        
+    </form>
+    
 </div>
 
-      
-           
-        <form action="cart.php" method="POST">
-
-            <div class="button" >
-                <?
-                $_SESSION["cart"][] = array(
-                    'id' => $_GET["id"],
-                    'title' => $_POST["hidden_name"],
-                    'price' => $_POST["hidden_price"],
-                    'quantity' => $_POST["quantity"],
-                );
-                $name=$_SESSION['name'];
-                    $number=$_SESSION['number'];
-                    $own_id=$_SESSION['owner_id'];
-                
-                ?>
-             
-             <input type="submit" 
-                  name="submit"
-                  value="CART">         
-                   
 
         </div>
-    </form>
 
-    </div>
-<div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
-        <p class="m-0 text-center text-white">
-            &copy; <a class="text-white font-weight-medium" href="#">AUTOCARE </a>. All Rights Reserved. Designed by
-            <a class="text-white font-weight-medium" href="https://htmlcodex.com">Flying Whales </a>
-        </p>
-    </div>
+
 </body>
+
 </html>

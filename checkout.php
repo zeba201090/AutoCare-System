@@ -26,9 +26,10 @@
                  'title' => $_POST["hidden_name"],
                  'price' => $_POST["hidden_price"],
                  'quantity' => $_POST["quantity"],
+
              );
              $_SESSION["cart"][$count] = $item_array;
-             echo '<script>window.location="shopping.php"</script>';
+            
          }
      }else{
          $item_array = array(

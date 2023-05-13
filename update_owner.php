@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>Update profile</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -61,18 +61,82 @@
         right: 0;
         color: #D0D3D5;
     }
+    label{
+            font-size: .85rem;
+            text-transform: uppercase;
+            color: black;
+        }
+    
     .white-panel{
-        background-color:#f3f3f3d7; ;
-        padding-left: 40px;
-        height:350px;
+        margin-top: 120px;
+        background-color: white ;
+        padding-left: 70px;
+        height:650px;
         width:55%;
         right:calc(50% - 50px);
         transition:.3s ease-in-out;
         z-index:0;
-        box-shadow: 0 0 35px 9px #00000096;
+        box-shadow: 0 0 20px 9px #00000096;
         color:black;
         opacity: .85;
+        padding-bottom: 90px;
+        margin-bottom: 80px;
     }
+    #sig { margin-left: 220px;
+    margin-top: 20px;
+    }
+    .vendor{ 
+        cursor: pointer;
+        border-radius: 6px;
+        background-color: #17a2b8;;
+        height: 50px;
+        width: 150px;
+        font-size: 15px;
+        color: white;
+        margin-left: 30px;
+
+    }
+    
+    .button {
+        cursor: pointer;
+        border-radius: 6px;
+        background-color: #194376;;
+        height: 50px;
+        width: 120px;
+        font-size: 15px;
+        color: white;
+    }
+    .signup__link{ margin-left: 80px;
+    text-decoration: underline;
+   
+    }
+    input[name=uname], input[name=email], input[name=phone], input[name=address] {
+        margin-left: 30px;
+        box-sizing: border-box;
+        align: right;
+
+    }
+
+    input[name=submit] {
+
+    border-radius: 6px;
+    background-color:  #194376;
+    height: 40px;
+    width: 100px;
+    font-size: 17px;
+        margin-left: 30%;
+    color: white; 
+}
+
+    #foot{
+        position: relative;
+        margin-top: 900px;
+    }
+    label {
+        width: 50px;
+        text-align: right;
+      }
+        
 </style>
 </head>
 <body>
@@ -98,27 +162,52 @@
 </div>
 </div>
     
-    <div class="white-panel w3-display-middle">
-        <br>
-        <h1 id="title">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-            WELCOME TO AUTOCARE
-            <hr class="w3-border-black" style="margin:auto;width:60%">
-        </h1>
-        <br>
-        <br>
-        <div class="center">
-            <button class="button" onclick="location.href='owner_login.php'">Login as Owner</button>
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            <button class="button" onclick="location.href='vender_login.php'">Login as Vendor</button>
+ <div class="y">
+<div class="white-panel w3-display-middle">
+      
+
+
+        <div class="signup__container">
+        <div class="container__child signup__thumbnail">
+           
+            <h1 id="sig" class="heading--primary">Update profile </h1>
+            <br>
+            </div>
+            <div class="signup__overlay"></div>
         </div>
+        <div class="container__child signup__form center txtlft">
+        <div id="container">
+        <form action="ownerupdate_index.php" method="POST">
+            <label for="uname">Name</label>
+            <input type="text" name="uname">
+            <br><br>
+            <label for="phone">Phone</label>
+            <input type="text" name="phone">
+            <br><br>
+            <label for="email">Email</label>
+            <input type="email" name="email">
+            <br><br>
+            <label for="address">Address</label>
+            <input type="text" name="address">
+            <br><br><br>
+
+            <input type="submit" value="Update" name="submit">
+        </form>
     </div>
+    <div style="  margin-top: 50px; font-weight: bold; ">
+        Please Send an Email at AutoCare@support.com if you want to change your password
+    </div>
+    <div>
+            
+        </div>
+        
+        </div>
+       
 </div>
-<div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
+<div id="foot" class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
         <p class="m-0 text-center text-white">
             &copy; <a class="text-white font-weight-medium" href="#">AUTOCARE </a>. All Rights Reserved. Designed by
             <a class="text-white font-weight-medium" href="https://htmlcodex.com">Flying Whales </a>
         </p>
     </div>
-</body>
 </html>

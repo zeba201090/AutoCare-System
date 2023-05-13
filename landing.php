@@ -80,7 +80,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="landing.php" class="nav-item nav-link active">Home</a>
                         <a href="services.php" class="nav-item nav-link">Services</a>
                         <a href="home.php" class="nav-item nav-link">JOIN US!</a>
                             
@@ -103,9 +103,9 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Best Car Repairing Services </h4>
-                            <h1 class="display-3 text-white mb-md-4">Best For Your Vehicle Maintanance</h1>
+                            <h1 class="display-3 text-white mb-md-4">Best For Your Vehicle Maintenance</h1>
                             <a href="owner_registration.php" class="btn btn-primary py-md-3 px-md-5 mt-2">SIGN UP TODAY</a>
-                            <a href="owner_login.php" class="btn btn-primary py-md-3 px-md-5 mt-2">SIGN IN</a>
+                            <a href="home.php" class="btn btn-primary py-md-3 px-md-5 mt-2">SIGN IN</a>
                         </div>
                     </div>
                 </div>
@@ -203,8 +203,8 @@
                 </div>
                 <div class="col-lg-7 mt-5 mt-lg-0 pl-lg-5">
                     <h6 class="text-secondary text-uppercase font-weight-medium mb-3">Learn About Us</h6>
-                    <h1 class="mb-4">We Aim To Bring Convenience To Vehicle Maintainance</h1>
-                    <h5 class="font-weight-medium font-italic mb-4">No more hassle for your vehicle's maintanace. Everything needed for a perfect and healthy vehicle is now in the palm of your hand. Properly maintaining your vehicle will not only ensure its safety and dependability, but may also increase fuel efficiency.
+                    <h1 class="mb-4">We Aim To Bring Convenience To Vehicle Maintenance</h1>
+                    <h5 class="font-weight-medium font-italic mb-4">No more hassle for your vehicle's maintenance. Everything needed for a perfect and healthy vehicle is now in the palm of your hand. Properly maintaining your vehicle will not only ensure its safety and dependability, but may also increase fuel efficiency.
 </h5>
                     <p class="mb-2">Our professionals will perform diagnostic tests, fluid flush and fills, engine replacement, oil changes, and total vehicle overhauls. 
 
@@ -213,7 +213,7 @@
                         <div class="col-sm-6 pt-3">
                             <div class="d-flex align-items-center">
                                 <i class="fa fa-check text-primary mr-2"></i>
-                                <p class="text-secondary font-weight-medium m-0">Maintainance Reminders</p>
+                                <p class="text-secondary font-weight-medium m-0">Maintenance Reminders</p>
                             </div>
                         </div>
                         <div class="col-sm-6 pt-3">
@@ -269,7 +269,7 @@
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4" style="width: 100px; height: 100px;">
                             <i class="fas fa-3x fa-check  text-secondary"></i>
                         </div>
-                        <h4 class="font-weight-bold m-0">Regular Maintainance Reminders</h4>
+                        <h4 class="font-weight-bold m-0">Regular Maintenance Reminders</h4>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 pb-1">

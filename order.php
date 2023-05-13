@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "cmss";
-$password = "1234";
-$dbname = "car_management_system_1";
+$username = "order";
+$password = "";
+$dbname = "car_management_system";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

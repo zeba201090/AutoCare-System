@@ -146,48 +146,28 @@ include("dbcon/conn.php");
 </head>
 <body>
     <? $_SESSION['owner_id']; ?>
-        <div class="signup__container">
-        <div class="container__child signup__thumbnail">
+       
             <br>
-            <div class="thumbnail__content center">
             <h1 class="heading--primary">Add your car</h1>
             <br>
-            </div>
-            <div class="signup__overlay"></div>
-        </div>
-        <div class="container__child signup__form center txtlft">
+            
         <form action="add_vehicle_index.php" method="POST">
-            <div class="form-group">
                 <label for="brand">Brand</label>
                 <input class="form-control" type="text" name="brand" id="brand" required />
-            </div>
             <br>
-            <div class="form-group">
                 <label for="model">Model</label>
                 <input class="form-control" type="text" name="model" id="model" required />
-            </div>
             <br>
-            <div class="form-group">
                 <label for="cyear">Year</label>
                 <input class="form-control" type="text" name="cyear" id="cyear" required />
-            </div>
             <br>
-            <div class="form-group">
                 <label for="mil">Milage</label>
                 <input class="form-control" type="text" name="mil" id="mil" required />
-            </div>
             <br>
-            <div class="m-t-lg">
-                <ul class="list-inline">
-                <li>
                     <button name="submit" class="btn btn--form" type="submit">Add</button>
-                </li>
                 <br>
-                </ul>
-            </div>
             </form>  
-        </div>
-        </div>
+       
 
         <div class="absolute txtlft">
         <?php include('templates/footer.php')?>

@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include("dbcon/conn.php");
     $vid=$_SESSION['id'];
     // $ssid=$_POST['sid'];
@@ -13,7 +12,7 @@
         $sql="UPDATE special_list SET status='done' WHERE sid='$act'";
         $run=mysqli_query($conn,$sql);
         if ($run){
-            header("Location:vendor_dashboard.php");	
+          
         }
         else {
             echo "unsuccessful" ;
@@ -23,7 +22,7 @@
         $sql="UPDATE special_list SET status='reject' WHERE sid='$act'";
         $run=mysqli_query($conn,$sql);
         if ($run){
-            header("Location:vendor_dashboard.php");	
+           	
         }
         else {
             echo "unsuccessful" ;

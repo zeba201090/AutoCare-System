@@ -13,6 +13,7 @@
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_assoc($result)){
         $sid=$row['sid'];
+        
         $status=$row['status'];
     }
     if(mysqli_num_rows($result)==0){
@@ -21,11 +22,10 @@
         $run=mysqli_query($conn,$sql);
     }
     else if($status!='pending'){
-        $sql="UPDATE cservice SET date=CURRENT_DATE(),status='pending' WHERE sid=$sid";
+        $sql="UPDATE cservice SET date=CURRENT_DATE(), status='pending' WHERE 'sid' = $sid";
         $run=mysqli_query($conn,$sql);
     }
     else{
-        $sql="UPDATE cservice SET date=CURRENT_DATE() WHERE sid=$sid";
         $run=mysqli_query($conn,$sql);
     }
 
